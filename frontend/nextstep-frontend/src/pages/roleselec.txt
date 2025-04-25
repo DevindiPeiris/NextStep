@@ -1,0 +1,70 @@
+import React from 'react';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from 'react-router-dom';
+
+const RoleSelection = () => {
+  const navigate = useNavigate();
+
+  const handleRoleSelect = (role) => {
+    navigate(`/signup/${role}`);
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="w-full max-w-4xl p-4 space-y-8">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold">Choose Your Role</h1>
+          <p className="mt-2 text-gray-600">Select how you want to join our platform</p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle>Student</CardTitle>
+              <CardDescription>Get guidance for your career path</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button 
+                className="w-full"
+                onClick={() => handleRoleSelect('student')}
+              >
+                Join as Student
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle>Counselor</CardTitle>
+              <CardDescription>Help students with your expertise</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button 
+                className="w-full"
+                onClick={() => handleRoleSelect('counselor')}
+              >
+                Join as Counselor
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="text-center">
+          <p className="text-gray-600">
+            Already have an account?{" "}
+            <Button 
+              variant="link" 
+              className="text-primary"
+              onClick={() => navigate('/signin')}
+            >
+              Sign In
+            </Button>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RoleSelection;
