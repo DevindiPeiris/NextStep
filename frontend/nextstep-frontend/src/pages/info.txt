@@ -1,0 +1,40 @@
+Tailwind CSS (Utility classes)
+
+-- Background Colors --
+-bg-{color}-
+To change the background color : bg-red-400
+
+-Arbitary colors-
+To setup the background color non default : bg-[#f254g1]
+
+-Opacity-
+To add the opacity level : bg-red-400/70
+
+-Gradiants-
+To add a gradiant : bg-gradiant-to-tl (tl:top left; r:right; tr:top righ;)
+                    from-green-400    (Starting color of the gradiant)
+                    via-blue-200      (The mid range color of the gradiant)
+                    to-red-300        (The end colr of the gradiant)
+
+
+
+-- Width & Height --
+-width-
+To change the width : w-30 
+
+-height-
+To change the height : h-40
+
+-Arbitary value-
+To add an arbitary value as height or width : w-[200px]  h-[50vh]
+
+-Percentage-
+To add a percentage as height or width : w-1/4  (25%)
+                                        w-3/4  (75%)
+
+-Max width/height-
+To add max width : max-w-xl (xl is the value for the screen : md,s)
+
+-Max width screen-
+This helps us to give the max width of an element : max-w-screen-xl (elements width will be xl)
+
