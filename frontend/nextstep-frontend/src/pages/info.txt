@@ -38,3 +38,7 @@ To add max width : max-w-xl (xl is the value for the screen : md,s)
 -Max width screen-
 This helps us to give the max width of an element : max-w-screen-xl (elements width will be xl)
 
+
+
+-- Padding & Margin --
+-Padding-
