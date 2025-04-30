@@ -1,4 +1,5 @@
 import './App.css'
+import MyTest from './pages/MyTest'
 import RoleSelection from './pages/RoleSelection'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
   return (
     <>
       <RoleSelection/>
+      <MyTest/>
     </>
   )
 }
