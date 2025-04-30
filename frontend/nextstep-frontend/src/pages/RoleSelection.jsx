@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function RoleSelection() {
   return (
@@ -23,8 +24,7 @@ function RoleSelection() {
     </div>
 
     <div className='grid'>
-      <p className='mr-2'>Already have an account? &nbsp; <a className='font-bold' href=''>Sign In</a></p>
-  
+      <p className='mr-2'>Already have an account? &nbsp; <Link to='/signin' className='font-bold'>Sign In</Link></p>
     </div>
   </div>
     
