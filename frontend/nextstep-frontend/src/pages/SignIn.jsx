@@ -2,8 +2,10 @@ import React from 'react'
 
 function SignIn() {
   return (
-    <div>
-      <h1>Welcome to sign In page</h1>
+    <div className='bg-gray-50 h-[100vh]'>
+      <div>
+        <h1></h1>
+      </div>
     </div>
   )
 }
