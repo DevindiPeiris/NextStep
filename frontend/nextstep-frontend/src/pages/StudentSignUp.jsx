@@ -4,21 +4,23 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 
-const Signin = () => {
+const Signup = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <H1>Welcome Back</H1>
-        <Gray>Sign in to your account</Gray>
+        <H1>Create Account</H1>
+        <Gray>Sign up as a Student</Gray>
         <div className="mt-4">
           <Input placeholder="Username" />
+          <Input placeholder="Email" type="email" />
           <Input placeholder="Password" type="password" />
-          <Button>Sign In</Button>
+          <Input placeholder="Confirm Password" type="password"/> 
+          <Button>Sign Up</Button>
           <div className="text-center mt-4">
             <p>
-              Don't have an account?{' '}
-              <Link to="/roleselection" className="font-bold">
-                Sign Up
+              Already have an account?{' '}
+              <Link to="/signin" className="font-bold">
+                Sign In
               </Link>
             </p>
           </div>
@@ -28,4 +30,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;
