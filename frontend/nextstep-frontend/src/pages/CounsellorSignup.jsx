@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const CounsellorSignup = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 mr-25 ml-25">
       <div className="max-w-md mx-auto bg-white p-10 rounded-lg shadow-lg">
         <H1>Submit Request</H1>
         <Gray>Apply to register as a counselor</Gray>
