@@ -33,7 +33,7 @@ const Quizzes = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 mr-25 ml-25">
       <Navbar />
       <div className="max-w-3xl mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold text-center mb-8">Career Interest Quiz</h1>

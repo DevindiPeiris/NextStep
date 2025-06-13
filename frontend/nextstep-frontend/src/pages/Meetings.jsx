@@ -7,13 +7,13 @@ const Meetings = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 mr-25 ml-25">
       <Navbar />
       <div className="max-w-2xl mx-auto px-4 py-20">
         <h1 className="text-3xl font-bold text-center mb-15">Manage Your Meetings</h1>
 
         <div className="flex flex-col space-y-12">
-          <div onClick={() => navigate('/book-meeting')} className="cursor-pointer">
+          <div onClick={() => navigate('/bookmeeting')} className="cursor-pointer">
             <ServiceCard
               icon={<FaCalendarPlus />}
               title="Book a New Meeting"
@@ -21,7 +21,7 @@ const Meetings = () => {
             />
           </div>
 
-          <div onClick={() => navigate('/my-meetings')} className="cursor-pointer">
+          <div onClick={() => navigate('/viewmeetings')} className="cursor-pointer">
             <ServiceCard
               icon={<FaCalendarCheck />}
               title="View Booked Meetings"

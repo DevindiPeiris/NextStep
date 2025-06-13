@@ -42,3 +42,7 @@ This helps us to give the max width of an element : max-w-screen-xl (elements wi
 
 -- Padding & Margin --
 -Padding-
+
+
+
+https://chatgpt.com/share/684c0c7b-6298-800d-8fe8-a5e0c77c1c44

@@ -10,6 +10,8 @@ import Chatbot from './pages/Chatbot'
 import Courses from './pages/Courses'
 import Quizzes from './pages/Quizzes'
 import Meetings from './pages/Meetings'
+import ViewMeetings from './pages/ViewMeetings'
+import BookMeeting from './pages/BookMeeting'
 
 function App() {
   
@@ -27,6 +29,8 @@ function App() {
         <Route path='/courses' element={<Courses/>}/>
         <Route path='/quiz' element={<Quizzes/>}/>
         <Route path='/meetings' element={<Meetings/>}/>
+        <Route path='/viewmeetings' element={<ViewMeetings/>}/>
+        <Route path='/bookmeeting' element={<BookMeeting/>}/>
       </Routes>
     </BrowserRouter>
   )
