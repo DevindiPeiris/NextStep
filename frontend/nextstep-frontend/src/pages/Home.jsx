@@ -41,7 +41,7 @@ const LandingPage = () => {
           </Gray>
           <div className="mt-6">
             <Button
-              className="w-auto px-6"
+              className="w-auto md:w-[400px] px-6 mx-auto"
               onClick={() => navigate('/roleselection')}
             >
               Get Started
