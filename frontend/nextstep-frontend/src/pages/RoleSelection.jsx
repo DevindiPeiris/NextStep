@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function RoleSelection() {
   const navigate = useNavigate();
   return (
-  <div className='grid justify-items-center bg-gray-50 h-[100vh]'>
+  <div className='grid justify-items-center min-h-screen bg-gray-100 mr-25 ml-25'>
     <div className="grid  items-center place-content-end">
         <H1 className="m-auto mb-0">Choose Your Role</H1>
         <Gray className="m-auto mt-0">Select how you want to join our platform</Gray>
