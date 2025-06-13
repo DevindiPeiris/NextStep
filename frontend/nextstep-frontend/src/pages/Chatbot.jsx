@@ -1,77 +1,58 @@
-// import React, { useState, useEffect, useRef } from 'react';
-// import { useChatbot } from '../components/ChatbotContext';
+import Navbar from "../components/Navbar";
 
-// const Chatbot = () => {
-//   const { isChatbotOpen, toggleChatbot } = useChatbot();
-//   const [messages, setMessages] = useState([{ text: 'Hello! How can I help you?', isBot: true }]);
-//   const [input, setInput] = useState('');
-//   const messagesEndRef = useRef(null);
+const Chatbot = () => {
+  return (
+    <div className="min-h-screen bg-gray-100 mr-25 ml-25">
+      <Navbar/>
 
-//   const scrollToBottom = () => {
-//     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-//   };
+      <div className="flex flex-col items-center justify-center px-4 py-8">
+        <div className="w-full max-w-3xl bg-white shadow-lg rounded-2xl p-6">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+            Career Guidance Assistant
+          </h2>
 
-//   useEffect(() => {
-//     scrollToBottom();
-//   }, [messages]);
+          {/* Chat display area */}
+          <div className="h-120 overflow-y-auto border border-gray-200 rounded-lg p-4 bg-gray-50 mb-4 space-y-4">
+            {/* Bot message */}
+            <div className="flex justify-start">
+              <div className="bg-gray-200 text-gray-800 px-4 py-2 rounded-2xl max-w-xs">
+                Hi! I'm here to help you explore your career path. 😊
+              </div>
+            </div>
 
-//   const handleSendMessage = async () => {
-//     if (!input.trim()) return;
+            {/* User message */}
+            <div className="flex justify-end">
+              <div className="bg-blue-600 text-white px-4 py-2 rounded-2xl max-w-xs">
+                What career suits me if I like design?
+              </div>
+            </div>
 
-//     const userMessage = { text: input, isBot: false };
-//     setMessages([...messages, userMessage]);
-//     setInput('');
+            {/* Bot reply */}
+            <div className="flex justify-start">
+              <div className="bg-gray-200 text-gray-800 px-4 py-2 rounded-2xl max-w-xs">
+                Great question! You might enjoy fields like graphic design, UI/UX, or product design.
+              </div>
+            </div>
+          </div>
 
-//     try {
-//       const response = await fetch('http://localhost:8080/api/chatbot/respond', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ message: input }),
-//       });
-//       const data = await response.json();
-//       setMessages((prev) => [...prev, { text: data.response, isBot: true }]);
-//     } catch (error) {
-//       setMessages((prev) => [...prev, { text: 'Error: Could not connect to server', isBot: true }]);
-//     }
-//   };
+          {/* Input area */}
+          <form className="flex gap-2">
+            <input
+              type="text"
+              placeholder="Type your message..."
+              className="flex-1 border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-//   if (!isChatbotOpen) return null;
-
-//   return (
-//     <div className="fixed bottom-16 right-4 w-80 h-96 bg-white rounded-lg shadow-xl flex flex-col">
-//       <div className="bg-blue-500 text-white p-4 rounded-t-lg flex justify-between items-center">
-//         <h3>Chatbot</h3>
-//         <button onClick={toggleChatbot}>✕</button>
-//       </div>
-//       <div className="flex-1 p-4 overflow-y-auto">
-//         {messages.map((msg, index) => (
-//           <div
-//             key={index}
-//             className={`mb-2 ${msg.isBot ? 'text-left' : 'text-right'}`}
-//           >
-//             <span
-//               className={`inline-block p-2 rounded-lg ${
-//                 msg.isBot ? 'bg-gray-200' : 'bg-blue-500 text-white'
-//               }`}
-//             >
-//               {msg.text}
-//             </span>
-//           </div>
-//         ))}
-//         <div ref={messagesEndRef} />
-//       </div>
-//       <div className="p-4 border-t">
-//         <input
-//           type="text"
-//           value={input}
-//           onChange={(e) => setInput(e.target.value)}
-//           onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-//           className="w-full p-2 border rounded"
-//           placeholder="Type a message..."
-//         />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Chatbot;
+export default Chatbot;

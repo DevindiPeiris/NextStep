@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import ServiceCard from '../components/ServiceCard';
 import pic1 from '../assets/123.jpg';
 import { Link, useNavigate } from 'react-router-dom';
+import MainImg from '../assets/c.jpeg';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const LandingPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="flex flex-col md:flex-row items-center justify-between p-8 bg-gradient-to-r from-gray-700 to-gray-900 text-white">
+      <section className="flex flex-col md:flex-row items-center justify-between  p-8 bg-gradient-to-r from-gray-700 to-gray-900 text-white">
         <div className="md:w-1/2 mb-8 md:mb-0">
           <H1>Shape Your Future with Expert Guidance</H1>
           <Gray>
@@ -50,17 +51,17 @@ const LandingPage = () => {
         </div>
         <div className="md:w-1/2">
           <img
-            src={pic1}
+            src={MainImg}
             alt="Career Guidance"
-            className="w-full rounded-lg shadow-lg"
+            className="rounded-lg shadow-lg"
           />
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="p-8">
+      <section className="p-20">
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">Our Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-20">
           <ServiceCard
             icon="🔍"
             title="Course Search"
@@ -85,9 +86,9 @@ const LandingPage = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className="p-8 text-center">
+      <section className="p-20 text-center">
         <h2 className="text-3xl font-bold mb-8 text-gray-900">How It Works</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
           <div className="flex flex-col items-center">
             <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mb-4">
               <span className="text-gray-800 text-2xl font-bold">1</span>
@@ -121,7 +122,7 @@ const LandingPage = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="p-8 bg-gradient-to-r from-gray-700 to-gray-900 text-center text-white">
+      <section className="p-20 bg-gradient-to-r from-gray-700 to-gray-900 text-center text-white">
         <H1>Ready to Shape Your Future?</H1>
         <Gray>
           Join thousands of students who have found their perfect career path
