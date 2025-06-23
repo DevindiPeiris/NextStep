@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Signin = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 mr-25 ml-25">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
         <H1>Welcome Back</H1>
         <Gray>Sign in to your account</Gray>

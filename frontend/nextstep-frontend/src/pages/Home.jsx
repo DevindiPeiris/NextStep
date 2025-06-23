@@ -10,7 +10,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-100 mr-25 ml-25">
+    <div>
       {/* Header */}
       <header className="flex justify-between items-center p-4 bg-white shadow">
         <div className="text-2xl font-bold text-gray-900">NextStep</div>
