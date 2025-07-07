@@ -1,36 +1,53 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import Navbar from '../components/Navbar';
+import { useNavigate } from 'react-router-dom';
 
-const quizData = [
-  {
-    id: 1,
-    question: "Which of the following best describes your interest?",
-    options: ["Technology", "Business", "Arts", "Science"],
-  },
-  {
-    id: 2,
-    question: "What type of work environment do you prefer?",
-    options: ["Office setting", "Remote/Flexible", "Outdoor/Active", "Laboratory"],
-  },
-  {
-    id: 3,
-    question: "Which skill do you enjoy using the most?",
-    options: ["Problem Solving", "Creative Thinking", "Communication", "Analysis"],
-  },
-];
 
 const Quizzes = () => {
+  const [quizData, setQuizData] = useState([]);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [results, setResults] = useState(null);
+  
+  const navigate = useNavigate();
+
+  useEffect(() => {
+  const fetchQuiz = async () => {
+    try {
+      const res = await fetch('http://localhost:8081/api/v1/quiz/questions'); 
+      const data = await res.json();
+      setQuizData(data);
+    } catch (err) {
+      console.error("Failed to load quiz data", err);
+    }
+  };
+  fetchQuiz();
+  }, []);
+
 
   const handleOptionChange = (questionId, selectedOption) => {
     setAnswers((prev) => ({ ...prev, [questionId]: selectedOption }));
   };
 
-  const handleSubmit = () => {
-    setSubmitted(true);
-    console.log("User Answers:", answers);
+
+  const handleSubmit = async () => {
+  try {
+    const res = await fetch('http://localhost:8081/api/v1/quiz/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(answers),
+    });
+
+    const data = await res.json();
+    navigate('/results', { state: { scores: data } });
+  } catch (err) {
+    console.error('Submission failed:', err);
+  }
   };
+
+
 
   return (
     <div className="min-h-screen bg-gray-100 mr-25 ml-25">
@@ -41,17 +58,17 @@ const Quizzes = () => {
         {quizData.map((q) => (
           <div key={q.id} className="mb-6 bg-white p-6 rounded-xl shadow">
             <h2 className="text-lg font-semibold mb-4">{q.question}</h2>
-            {q.options.map((option) => (
-              <label key={option} className="block mb-2">
+            {q.options.map((optionObj) => (
+              <label key={optionObj.optionID} className="block mb-2">
                 <input
                   type="radio"
-                  name={`question-${q.id}`}
-                  value={option}
-                  checked={answers[q.id] === option}
-                  onChange={() => handleOptionChange(q.id, option)}
+                  name={`question-${q.questionID}`}
+                  value={optionObj.optionID}
+                  checked={answers[q.questionID] === optionObj.optionID}
+                  onChange={() => handleOptionChange(q.questionID, optionObj.optionID)}
                   className="mr-2"
                 />
-                {option}
+                {optionObj.option}
               </label>
             ))}
           </div>
@@ -70,6 +87,20 @@ const Quizzes = () => {
           </div>
         )}
       </div>
+      {results && (
+  <div className="mt-8 p-6 bg-white rounded-xl shadow text-gray-800">
+    <h2 className="text-xl font-semibold mb-4">Your Field Preferences:</h2>
+    <ul>
+      {Object.entries(results).map(([field, count]) => (
+        <li key={field} className="mb-2">
+          <span className="font-medium">{field}:</span> {count}
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+
     </div>
   );
 };

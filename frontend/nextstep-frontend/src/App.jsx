@@ -14,6 +14,7 @@ import ViewMeetings from './pages/ViewMeetings'
 import BookMeeting from './pages/BookMeeting'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminCourse from './pages/AdminCourse'
+import Results from './pages/Results'
 
 function App() {
   
@@ -35,6 +36,8 @@ function App() {
         <Route path='/bookmeeting' element={<BookMeeting/>}/>
         <Route path='/admindashboard' element={<AdminDashboard/>}/>
         <Route path='/admincourse' element={<AdminCourse/>}/>
+        <Route path="/results" element={<Results />} />
+
       </Routes>
     </BrowserRouter>
   )
