@@ -5,8 +5,8 @@ import ServiceCard from '../components/ServiceCard';
 import pic1 from '../assets/123.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import MainImg from '../assets/c.jpeg';
-import HomepageBackground from '../assets/HomepageBackground.png'
-import NextStepLogo from '../assets/NextStepLogo.png'
+import HomepageBackground from '../assets/HomepageBackground1.png'
+import NextStepLogo from '../assets/NextStepLogo1.png'
 import { HiArrowNarrowRight } from 'react-icons/hi';
 
 
@@ -17,15 +17,8 @@ const Home = () => {
     <div>
       {/* Homepage - Introduction Section*/}
       <section style={{ backgroundImage: `url(${HomepageBackground})` }} className="bg-cover bg-center min-h-screen">
-        <div className="flex flex-col md:flex-row items-center justify-between px-[6%] py-4 gap-4 md:gap-0 md:pt-[4%]">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start space-x-0 sm:space-x-4 text-center sm:text-left">
-            <img src={NextStepLogo} alt="Logo" className="w-24 sm:w-28 md:w-32 object-contain"/>
-            <div className="leading-tight mt-2 sm:mt-0">
-              <div className="text-[#0F172A] text-2xl sm:text-3xl md:text-[2.5rem] font-extrabold md:mt-[10%]">NextStep</div>
-              <div className="text-[#2560E0] text-sm sm:text-base md:text-lg font-semibold tracking-widest uppercase">Career Guidance</div>
-            </div>
-          </div>
-          <div className="flex space-x-4">
+        <div className='pr-[6%] py-[4%]'>
+          <div className="flex justify-end space-x-4">
             <Link to="/signin" 
             className="bg-[#2560E0] text-white px-4 py-2 rounded-md font-semibold hover:bg-[#1b54c2] transition duration-200 text-sm md:text-base">
               Sign In
@@ -35,25 +28,32 @@ const Home = () => {
               Sign Up
             </Link>
           </div>
-        </div>
-        <div className="flex flex-col items-center pt-[2%]">
-          <span className="text-3xl sm:text-3xl md:text-6xl lg:text-7xl font-extrabold" style={{WebkitTextStroke: '1.5px #2560E0',WebkitTextFillColor: 'white'}}>Shape Your Future with</span><br/>
-          <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold" style={{WebkitTextStroke: '1px white',WebkitTextFillColor: '#2560E0'}}>Expert Guidance</span>
-          <span className="[font-family:'Montserrat',sans-serif] text-white font-semibold text-base sm:text-lg md:text-xl pt-[4%]   sm:tracking-widest md:tracking-[0.25em] text-center mx-auto">
-            Get personalized career counseling, explore courses, and make<br/>informed decisions about your educational 
+          <div>
+            <img src={NextStepLogo} alt="Logo"/>
+          </div>
+          <div className='flex flex-col items-center pl-[6%]'>
+            <span className="text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-extrabold text-white mt-[5%] bg-[#2560E099] px-[2%] py-[0.2%] [font-family:'Montserrat',sans-serif]" >Shape Your Future with</span>
+            <span className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#212C3C] mt-[1%] [font-family:'Montserra',sans-serif]" style={{WebkitTextStroke: '1px white'}} > Expert Guidance</span>
+            <span className="text-white text-2xl font-semibold mt-[7%] [font-family:'Montserrat',sans-serif]" > Get personalized career counseling, explore courses, and make<br/>informed decisions about your educational 
             path with NextStep.</span>
-        </div>
-        <div className="flex flex-col items-center pt-[5%]">
+          </div>
+          <div className="flex flex-col items-center pl-[6%] pt-[3%]">
           <button className="flex items-center gap-3 bg-[#2263DD] text-white px-25 py-3 rounded-full font-semibold text-base md:text-lg hover:bg-[#1b54c2] 
           transition duration-200 [font-family:'Montserrat',sans-serif] shadow-md" onClick={() => navigate('/roleselection')}>
             Get Started<HiArrowNarrowRight className="text-xl md:text-2xl mt-[1px]" />
           </button>
         </div>
+        </div>
+
+        
       </section>
 
       {/* Services Section */}
       <section className="p-20">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">Our Services</h2>
+        <h2 className="text-5xl font-bold text-center mb-8 text-gray-900 [font-family:'Montserrat',sans-serif]">Our Services</h2>
+        <div className="flex justify-center">
+          <span className="text-xl text-center text-[#6D6D6D]">Comprehensive career guidance tools and resources to help you make <br/>informed decisions about your future</span>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-20">
           <ServiceCard
             icon="🔍"
