@@ -8,7 +8,10 @@ import MainImg from '../assets/c.jpeg';
 import HomepageBackground from '../assets/HomepageBackground1.png'
 import NextStepLogo from '../assets/NextStepLogo1.png'
 import { HiArrowNarrowRight } from 'react-icons/hi';
-
+import coursepic from '../assets/course.png';
+import chatbotpic from '../assets/chatbot.png';
+import quizpic from '../assets/quiz.png';
+import counsellorpic from '../assets/counsellor.png';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -49,29 +52,29 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="p-20">
+      <section className="p-20 mx-[6%]">
         <h2 className="text-5xl font-bold text-center mb-8 text-gray-900 [font-family:'Montserrat',sans-serif]">Our Services</h2>
         <div className="flex justify-center">
           <span className="text-xl text-center text-[#6D6D6D]">Comprehensive career guidance tools and resources to help you make <br/>informed decisions about your future</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mt-25 ">
           <ServiceCard
-            icon="🔍"
+            img={coursepic}
             title="Course Search"
             description="Find the perfect course that matches your interests and goals."
           />
           <ServiceCard
-            icon="📚"
+            img={quizpic}
             title="Career Quiz"
             description="Discover your career interests with our personalized quiz."
           />
           <ServiceCard
-            icon="💬"
+            img={chatbotpic}
             title="Career Chatbot"
             description="Get instant answers to your career and education questions."
           />
           <ServiceCard
-            icon="📅"
+            img={counsellorpic}
             title="Book a Counselor"
             description="Schedule a one-on-one session with a professional career counselor."
           />
