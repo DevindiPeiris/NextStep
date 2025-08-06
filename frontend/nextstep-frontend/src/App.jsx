@@ -15,6 +15,7 @@ import BookMeeting from './pages/BookMeeting'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminCourse from './pages/AdminCourse'
 import Results from './pages/Results'
+import Signup from './pages/SignUp'
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/roleselection' element={<RoleSelection/>}/>
         <Route path='/signin' element={<SignIn/>}/>
+        <Route path='/signup' element={<Signup />} />
         <Route path='/Counsellorsignup' element={<CounsellorSignup/>}/>
         <Route path='/StudentSignUp' element={<StudentSignUp/>}/>
         <Route path='/services' element={<Services/>}/>

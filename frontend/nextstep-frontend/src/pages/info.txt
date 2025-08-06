@@ -53,3 +53,115 @@ npm i react-icons
 
 npm install recharts
 npm install react-is
+
+
+
+
+
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import signUpLogo from '../assets/Logo_sm.png';
+import signUpBack from '../assets/backArrow.png';
+
+const SignUp = () => {
+  const navigate = useNavigate();
+  const [role, setRole] = useState('counselor'); // default selected role
+
+  return (
+    <div className="mx-auto w-full max-w-md min-h-screen bg-white shadow-md rounded-2xl p-6 md:p-10">
+      {/* Logo */}
+      <div className="flex justify-center mt-4">
+        <img src={signUpLogo} alt="Logo" className="h-12" />
+      </div>
+
+      {/* Back to home */}
+      <div className="hidden md:flex items-center mt-4 text-sm text-gray-600 font-semibold">
+        <Link to="/" className="flex items-center hover:underline">
+          <img src={signUpBack} alt="Back" className="h-4 mr-2" />
+          Home
+        </Link>
+      </div>
+
+      {/* Role Tabs */}
+      <div className="flex bg-gray-200 p-1 rounded-full mt-6">
+        <button
+          onClick={() => setRole('student')}
+          className={`w-1/2 py-2 rounded-full transition font-medium ${
+            role === 'student' ? 'bg-white shadow text-black' : 'text-gray-600'
+          }`}
+        >
+          Student
+        </button>
+        <button
+          onClick={() => setRole('counselor')}
+          className={`w-1/2 py-2 rounded-full transition font-medium ${
+            role === 'counselor' ? 'bg-white shadow text-black' : 'text-gray-600'
+          }`}
+        >
+          Counselor
+        </button>
+      </div>
+
+      {/* Form Header */}
+      {role === 'counselor' && (
+        <>
+          <h2 className="text-2xl font-bold text-center mt-6">Apply as Counselor</h2>
+          <p className="text-center text-gray-500 mb-6">Submit your application to join our team</p>
+
+          {/* Counselor Form */}
+          <form className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">Full Name</label>
+              <input
+                type="text"
+                placeholder="Enter your full name"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Email</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Specialization</label>
+              <input
+                type="text"
+                placeholder="e.g.; Computer Science, Business"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">Resume</label>
+              <input
+                type="file"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-300"
+            >
+              Submit Application
+            </button>
+          </form>
+        </>
+      )}
+
+      {/* Footer */}
+      <p className="text-center text-sm text-gray-500 mt-6">
+        Already have an account?
+        <Link to="/login" className="text-blue-600 font-medium hover:underline ml-1">Sign In</Link>
+      </p>
+    </div>
+  );
+};
+
+export default SignUp;
