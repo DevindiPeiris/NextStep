@@ -165,3 +165,172 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+
+
+???????????????????????????????????????????????????????????????
+delete SignUp.jsx
+StudentSignUp.jsx
+Button.jsx
+Gray.jsx
+Input.jsx
+Role.jsx
+RoleSelection.jsx
+FileUpload.jsx
+SignIn.jsx
+
+
+
+
+
+
+
+
+<div className="flex items-center justify-center min-h-screen bg-gray-100 mr-25 ml-25">
+    //   <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+    //     <H1>Create Account</H1>
+    //     <Gray>Sign up as a Student</Gray>
+    //     <div className="mt-4">
+    //       <Input placeholder="Username" />
+    //       <Input placeholder="Email" type="email" />
+    //       <Input placeholder="Password" type="password" />
+    //       <Input placeholder="Confirm Password" type="password"/> 
+    //       <Button onClick={() => navigate('/signin')}>Sign Up</Button>
+    //       <div className="text-center mt-4">
+    //         <p>
+    //           Already have an account?{' '}
+    //           <Link to="/signin" className="font-bold">
+    //             Sign In
+    //           </Link>
+    //         </p>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+
+
+
+
+<div className='grid justify-items-center min-h-screen bg-gray-100 mr-25 ml-25'>
+    <div className="grid  items-center place-content-end">
+        <H1 className="m-auto mb-0">Choose Your Role</H1>
+        <Gray className="m-auto mt-0">Select how you want to join our platform</Gray>
+    </div>
+    
+    <div className='flex justify-items-center gap-10 items-center'>
+      
+      <Role
+        title="Student"
+        description="Get guidance for your career path"
+        buttonText="Join as Student"
+        onClick={() => navigate('/StudentSignUp')}
+      />
+      <Role
+        title="Counsellor"
+        description="Provide support and career advice to students"
+        buttonText="Join as Counsellor"
+        onClick={() => navigate('/Counsellorsignup')}
+      />
+    </div>
+
+    <div className='grid'>
+      <p className='mr-2'>Already have an account? &nbsp; <Link to='/signin' className='font-bold'>Sign In</Link></p>
+    </div>
+  </div>
+    
+
+<div className="flex items-center justify-center min-h-screen bg-gray-100 mr-25 ml-25">
+      <div className="max-w-md mx-auto bg-white p-10 rounded-lg shadow-lg">
+        <H1>Submit Request</H1>
+        <Gray>Apply to register as a counselor</Gray>
+        <div className="mt-4">
+          <Input placeholder="Full Name" />
+          <Input placeholder="Email" />
+          <Input placeholder="Contact" />
+          <FileUpload placeholder="Supporting Document" />
+          <Button>Submit</Button>
+          <div className="text-center mt-4">
+            <p>
+              Already have an account?{' '}
+              <Link to="/signin" className="font-bold">
+                Sign In
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <H1>Welcome Back</H1>
+        <Gray>Sign in to your account</Gray>
+        <div className="mt-4">
+          <Input placeholder="Username" />
+          <Input placeholder="Password" type="password" />
+          <Button onClick={() => navigate('/services')}>Sign In</Button>
+          <div className="text-center mt-4">
+            <p>
+              Don't have an account?{' '}
+              <Link to="/roleselection" className="font-bold">
+                Sign Up
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import ServiceCard from '../components/ServiceCard';
+import { FaBook, FaPuzzlePiece, FaVideo, FaBriefcase } from 'react-icons/fa';
+import coursepic from '../assets/course.png';
+import chatbotpic from '../assets/chatbot.png';
+import quizpic from '../assets/quiz.png';
+import counsellorpic from '../assets/counsellor.png';
+
+const Services = () => {
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <Navbar/>
+
+      <div className="flex justify-center md:mt-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-25 w-full max-w-4xl">
+          <Link to="/courses">
+            <ServiceCard
+              icon={<FaBook />}
+              title="Courses"
+              description="Explore a variety of courses tailored to your career path."
+            />
+          </Link>
+          <Link to="/quiz">
+            <ServiceCard
+              icon={<FaPuzzlePiece />}
+              title="Quizzes"
+              description="Take quizzes to identify your interests and strengths."
+            />
+          </Link>
+          <Link to="/meetings">
+            <ServiceCard
+              icon={<FaVideo />}
+              title="Meetings"
+              description="Schedule video meetings with career mentors and professionals."
+            />
+          </Link>
+          <Link to="/chatbot">
+            <ServiceCard
+              icon={<FaBriefcase />}
+              title="Career Recommendations"
+              description="Get personalized career suggestions based on your preferences."
+            />
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Services;

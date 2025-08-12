@@ -26,7 +26,7 @@ const Home = () => {
             className="bg-[#2560E0] text-white px-4 py-2 rounded-md font-semibold hover:bg-[#1b54c2] transition duration-200 text-sm md:text-base">
               Sign In
             </Link>
-            <Link to="/signup"
+            <Link to="/roleselection"
             className="bg-white text-[#2560E0] border border-[#2263DD] px-4 py-2 rounded-md font-semibold hover:bg-gray-100 transition duration-200 text-sm md:text-base">
               Sign Up
             </Link>
