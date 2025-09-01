@@ -1,10 +1,61 @@
-import { useState } from 'react';
-import TimeSlot from './TimeSlot';
+import { useEffect, useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+import { getAvailability, bookMeeting } from "../api/counsellorApi";
+import { createCheckoutSession } from "../api/paymentApi";
+
 
 const CounselorModal = ({ counselor, isOpen, onClose }) => {
-  const [tab, setTab] = useState('about');
+  const [tab, setTab] = useState("about");
+  const [slots, setSlots] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(5); // 👈 show only 5 at once
+
+  useEffect(() => {
+    if (tab === "availability" && counselor) {
+      getAvailability(counselor.id)
+        .then((res) => setSlots(res.data))
+        .catch((err) => console.error("Error fetching availability:", err));
+    }
+  }, [tab, counselor]);
 
   if (!isOpen || !counselor) return null;
+
+  const handleBook = async (slot) => {
+  const studentId = localStorage.getItem("userId");
+  const payload = {
+    studentId,
+    counsellorId: counselor.id,
+    slotId: slot.id   // ✅ crucial!
+  };
+
+  try {
+    const res = await createCheckoutSession(payload);
+    const { url } = res.data;
+    window.location.href = url;
+  } catch (err) {
+    console.error("Error creating checkout session:", err);
+    alert("Failed to start payment.");
+  }
+};
+
+  
+  const formatSlot = (slot) => {
+    const start = new Date(slot.startTime);
+    const end = new Date(slot.endTime);
+
+    const date = start.toISOString().split("T")[0]; 
+    const startTime = start.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    const endTime = end.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+    return `${date}  -   ${startTime} - ${endTime}`;
+  };
+
+  
+  const handleScroll = (e) => {
+    const { scrollTop, clientHeight, scrollHeight } = e.target;
+    if (scrollTop + clientHeight >= scrollHeight - 20) {
+      setVisibleCount((prev) => Math.min(prev + 5, slots.length));
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center px-4">
@@ -16,48 +67,68 @@ const CounselorModal = ({ counselor, isOpen, onClose }) => {
           &times;
         </button>
 
-        <h2 className="text-2xl font-semibold mb-4">{counselor.name}</h2>
+        <h2 className="text-2xl font-semibold mb-4">{counselor.username}</h2>
 
-        {/* Tabs */}
+        
         <div className="flex border-b mb-4">
           <button
-            onClick={() => setTab('about')}
-            className={`px-4 py-2 font-medium ${tab === 'about' ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-600'}`}
+            onClick={() => setTab("about")}
+            className={`px-4 py-2 font-medium ${
+              tab === "about"
+                ? "border-b-2 border-blue-500 text-blue-600"
+                : "text-gray-600"
+            }`}
           >
             View Details
           </button>
           <button
-            onClick={() => setTab('availability')}
-            className={`px-4 py-2 font-medium ${tab === 'availability' ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-600'}`}
+            onClick={() => setTab("availability")}
+            className={`px-4 py-2 font-medium ${
+              tab === "availability"
+                ? "border-b-2 border-blue-500 text-blue-600"
+                : "text-gray-600"
+            }`}
           >
             Check Availability
           </button>
         </div>
 
-        {/* Content */}
-        {tab === 'about' ? (
+       
+        {tab === "about" ? (
           <div>
-            <img src={counselor.image} alt={counselor.name} className="w-40 rounded-lg mb-4" />
-            <p className="text-gray-700">{counselor.description}</p>
+            <p className="text-gray-700">
+              {counselor.description || "No description set yet."}
+            </p>
           </div>
         ) : (
           <div>
-            <p className="font-medium text-lg mb-2">Available Appointment Slots</p>
-            <div className="space-y-4">
-              <div>
-                <p className="font-semibold">Monday</p>
-                <div className="grid grid-cols-2 gap-4 mt-1">
-                  <TimeSlot time="9:00 - 10:00 AM" />
-                  <TimeSlot time="1:00 - 2:00 PM" />
-                </div>
-              </div>
-              <div>
-                <p className="font-semibold">Wednesday</p>
-                <div className="grid grid-cols-2 gap-4 mt-1">
-                  <TimeSlot time="11:00 - 12:00 PM" />
-                  <TimeSlot time="3:00 - 4:00 PM" />
-                </div>
-              </div>
+            <p className="font-medium text-lg mb-2">
+              Available Appointment Slots
+            </p>
+            <div
+              className="space-y-4 max-h-80 overflow-y-auto" 
+              onScroll={handleScroll}
+            >
+              {slots.length > 0 ? (
+                slots
+                  .slice(0, visibleCount) 
+                  .map((slot) => (
+                    <div
+                      key={slot.id}
+                      className="flex justify-between items-center bg-gray-100 p-3 rounded-md"
+                    >
+                      <span>{formatSlot(slot)}</span>
+                      <button
+                        onClick={() => handleBook(slot)}
+                        className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                      >
+                        Book
+                      </button>
+                    </div>
+                  ))
+              ) : (
+                <p>No availability set by this counsellor.</p>
+              )}
             </div>
           </div>
         )}

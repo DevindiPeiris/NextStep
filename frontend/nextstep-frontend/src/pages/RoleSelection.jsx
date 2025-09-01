@@ -11,7 +11,7 @@ function RoleSelection() {
   const navigate = useNavigate();
   return (
   <div className="mx-0 md:mx-80">
-    <div className="signUp-Logo flex items-center justify-center mt-7 md:mt-20">
+    <div className="signUp-Logo flex items-center justify-center mt-7 md:mt-10 xl:mt-10">
       <img src={signUpLogo}/>
     </div>
     <div className='signUp-Back hidden md:flex items-center pt-6'>
@@ -20,7 +20,7 @@ function RoleSelection() {
     </div>
     
     <div className="mt-4 bg-white p-8 rounded-2xl shadow-md w-full max-w-m border border-[#d0daec]">
-      <p className="text-[22px] font-bold text-center mt-8 mb-2 [font-family:'Montserrat',sans-serif]">Choose Your Role</p>
+      <p className="text-[22px] font-bold text-center mt-5 mb-2 [font-family:'Montserrat',sans-serif]">Choose Your Role</p>
       <div className="text-center mb-8">
         <Gray>Select how you want to join our platform</Gray>
       </div>

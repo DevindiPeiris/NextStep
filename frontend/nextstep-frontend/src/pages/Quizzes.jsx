@@ -14,7 +14,7 @@ const Quizzes = () => {
   useEffect(() => {
   const fetchQuiz = async () => {
     try {
-      const res = await fetch('http://localhost:8081/api/v1/quiz/questions'); 
+      const res = await fetch('http://localhost:8083/api/v1/quiz/questions'); 
       const data = await res.json();
       setQuizData(data);
     } catch (err) {
@@ -32,7 +32,7 @@ const Quizzes = () => {
 
   const handleSubmit = async () => {
   try {
-    const res = await fetch('http://localhost:8081/api/v1/quiz/submit', {
+    const res = await fetch('http://localhost:8083/api/v1/quiz/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const Quizzes = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-100 mr-25 ml-25">
+    <div className="min-h-screen bg-gray-100  ">
       <Navbar />
       <div className="max-w-3xl mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold text-center mb-8">Career Interest Quiz</h1>

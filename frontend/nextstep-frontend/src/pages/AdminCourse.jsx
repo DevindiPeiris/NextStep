@@ -99,7 +99,7 @@ const AdminCourse = () => {
               setEditMode(false);
               setSelectedCourseId(null);
             }}
-            className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700"
+            className="flex items-center gap-2 px-4 py-2 bg-[#2560E0] text-white rounded hover:bg-gray-700"
           >
             <FaPlus />
             {editMode ? "Cancel Edit" : "Add New Course"}

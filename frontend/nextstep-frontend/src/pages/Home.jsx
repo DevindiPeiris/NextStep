@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <div>
-      {/* Homepage - Introduction Section*/}
+      
       <section style={{ backgroundImage: `url(${HomepageBackground})` }} className="bg-cover bg-center min-h-screen">
         <div className='md:pr-[6%] md:py-[4%] '>
           <div className="hidden md:flex justify-end space-x-4">
@@ -51,7 +51,7 @@ const Home = () => {
         
       </section>
 
-      {/* Services Section */}
+      
       <section className="p-20 mx-[6%]">
         <h2 className="text-2xl md:text-5xl font-bold text-center mb-8 text-gray-900 [font-family:'Montserrat',sans-serif]">Our Services</h2>
         <div className="flex justify-center">
@@ -83,12 +83,11 @@ const Home = () => {
 
       
 
-      {/* Call to Action Section */}
+     
       <section className="p-20 bg-gradient-to-r from-gray-700 to-gray-900 text-center text-white">
         <H1>Ready to Shape Your Future?</H1>
         <Gray>
-          Join thousands of students who have found their perfect career path
-          with our guidance.
+          Start your journey with us and uncover the future career that truly matches your strengths and aspirations.
         </Gray>
         <div className="mt-6">
           <Button

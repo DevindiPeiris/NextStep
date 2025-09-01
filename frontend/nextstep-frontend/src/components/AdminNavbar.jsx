@@ -3,8 +3,8 @@ import { FaTachometerAlt, FaUsers, FaBook } from "react-icons/fa";
 
 const AdminNavbar = () => {
   return (
-    <div className="h-screen w-64 bg-gray-900 text-white flex flex-col p-4">
-      {/* Adjusted bottom margin for alignment */}
+    <div className="h-screen w-64 bg-[#2560E0] text-white flex flex-col p-4">
+      
       <h1 className="text-2xl font-bold mb-20 mt-5 text-center">NextStep</h1>
 
       <nav className="flex flex-col gap-2">
@@ -21,7 +21,7 @@ const AdminNavbar = () => {
         </NavLink>
 
         <NavLink
-          to="/admin/users"
+          to="/adminuser"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
               isActive ? "bg-gray-700" : "hover:bg-gray-800"

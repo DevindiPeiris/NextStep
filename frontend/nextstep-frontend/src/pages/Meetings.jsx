@@ -7,12 +7,12 @@ const Meetings = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-100 mr-25 ml-25">
+    <div className="min-h-screen bg-gray-100">
       <Navbar />
-      <div className="max-w-2xl mx-auto px-4 py-20">
+      <div className="max-w-2xl mx-auto px-4 py-5">
         <h1 className="text-3xl font-bold text-center mb-15">Manage Your Meetings</h1>
 
-        <div className="flex flex-col space-y-12">
+        <div className="flex flex-col items-center space-y-12">
           <div onClick={() => navigate('/bookmeeting')} className="cursor-pointer">
             <ServiceCard
               icon={<FaCalendarPlus />}
