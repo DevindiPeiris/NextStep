@@ -23,8 +23,7 @@ public class JwtService {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
 
-    // Generate token with username + role
-    // Generate token with userId + username + role
+    
     public String generateToken(Long userId, String username, String role) {
         return Jwts.builder()
                 .setSubject(username)

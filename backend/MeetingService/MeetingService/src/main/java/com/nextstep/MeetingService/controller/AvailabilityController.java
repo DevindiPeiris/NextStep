@@ -20,17 +20,14 @@ public class AvailabilityController {
         this.availabilityRepository = availabilityRepository;
     }
 
-    /**
-     * Counsellor sets their availability for a given day.
-     * This will generate slots automatically based on the sessionLengthMinutes field.
-     */
+    
     @PostMapping("/generate")
     public ResponseEntity<List<CounsellorAvailability>> generateDaySlots(
             @RequestBody AvailabilityRequest request) {
 
         LocalDate targetDate = LocalDate.parse(request.getDate());
-        LocalTime startTime = LocalTime.parse(request.getStart()); // e.g. "09:00"
-        LocalTime endTime = LocalTime.parse(request.getEnd());     // e.g. "14:00"
+        LocalTime startTime = LocalTime.parse(request.getStart()); 
+        LocalTime endTime = LocalTime.parse(request.getEnd());     
         int duration = request.getSessionLengthMinutes() > 0 ? request.getSessionLengthMinutes() : 60;
 
         List<CounsellorAvailability> slots = new ArrayList<>();
@@ -51,9 +48,7 @@ public class AvailabilityController {
         return ResponseEntity.ok(availabilityRepository.saveAll(slots));
     }
 
-    /**
-     * Get available (not yet booked) slots for a counsellor
-     */
+    
     @GetMapping("/{counsellorId}")
     public ResponseEntity<List<CounsellorAvailability>> getAvailability(@PathVariable Long counsellorId) {
         return ResponseEntity.ok(availabilityRepository.findByCounsellorIdAndBookedFalse(counsellorId));

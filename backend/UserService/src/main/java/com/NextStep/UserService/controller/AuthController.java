@@ -15,13 +15,13 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    // Student registration
+    
     @PostMapping("/register")
     public AuthResponse register(@RequestBody RegisterRequest request) {
         return authService.register(request);
     }
 
-    // Login
+    
     @PostMapping("/login")
     public AuthResponse login(@RequestBody LoginRequest request) {
         return authService.login(request);

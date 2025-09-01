@@ -23,17 +23,17 @@ public class JwtService {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
     }
 
-    // ✅ Extract username (subject) from token
+    
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
-    // ✅ Extract role field (we stored in UserService)
+    
     public String extractRole(String token) {
         return extractClaim(token, claims -> claims.get("role", String.class));
     }
 
-    // ✅ Generic claim extractor
+    
     public <T> T extractClaim(String token, Function<Claims, T> resolver) {
         return resolver.apply(
                 Jwts.parserBuilder()
@@ -44,7 +44,7 @@ public class JwtService {
         );
     }
 
-    // ✅ Validate token
+    
     public boolean isTokenValid(String token, String username) {
         final String extractedUsername = extractUsername(token);
         return extractedUsername.equals(username) && !isTokenExpired(token);

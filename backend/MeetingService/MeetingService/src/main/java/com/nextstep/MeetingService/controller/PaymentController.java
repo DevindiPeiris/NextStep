@@ -23,14 +23,14 @@ public class PaymentController {
 
     @PostMapping("/create-checkout-session")
     public ResponseEntity<Map<String, Object>> createCheckoutSession(@RequestBody MeetingRequest request) throws StripeException {
-        Long amountInCents = 2000L; // test price - replace with counsellor profile price later
+        Long amountInCents = 2000L; 
 
-        // Debug log to verify slotId is passed
-        System.out.println("📌 Creating Stripe Checkout for studentId=" + request.getStudentId() +
+        
+        System.out.println("Creating Stripe Checkout for studentId=" + request.getStudentId() +
                 ", counsellorId=" + request.getCounsellorId() +
                 ", slotId=" + request.getSlotId());
 
-        // ✅ Put IDs into metadata
+        
         Map<String, String> metadata = new HashMap<>();
         metadata.put("studentId", request.getStudentId().toString());
         metadata.put("counsellorId", request.getCounsellorId().toString());

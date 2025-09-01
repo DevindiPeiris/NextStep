@@ -16,17 +16,17 @@ public class CounsellorProfileController {
         this.profileRepository = profileRepository;
     }
 
-    // Counsellor creates or updates their profile AFTER they log in
+    
     @PostMapping("/{counsellorId}")
     public ResponseEntity<CounsellorProfile> saveProfile(
             @PathVariable Long counsellorId,
             @RequestBody CounsellorProfile profile) {
 
-        profile.setCounsellorId(counsellorId); // enforce correct link back to UserService
+        profile.setCounsellorId(counsellorId); 
         return ResponseEntity.ok(profileRepository.save(profile));
     }
 
-    // Students fetch counsellor profile when browsing
+    
     @GetMapping("/{counsellorId}")
     public ResponseEntity<CounsellorProfile> getProfile(@PathVariable Long counsellorId) {
         return profileRepository.findById(counsellorId)

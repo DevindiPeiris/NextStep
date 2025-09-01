@@ -39,21 +39,21 @@ public class StripeWebhookController {
         try {
             event = Webhook.constructEvent(payload, sigHeader, endpointSecret);
         } catch (SignatureVerificationException e) {
-            System.out.println("❌ Invalid signature: " + e.getMessage());
+            System.out.println("Invalid signature: " + e.getMessage());
             return ResponseEntity.badRequest().body("Invalid signature");
         }
 
-        System.out.println("🔥 Event received: " + event.getType());
+        System.out.println("Event received: " + event.getType());
 
         if ("checkout.session.completed".equals(event.getType())) {
             EventDataObjectDeserializer deserializer = event.getDataObjectDeserializer();
             Optional<StripeObject> obj = deserializer.getObject();
 
             if (obj.isPresent()) {
-                Session session = (Session) obj.get();   // ✅ cast
+                Session session = (Session) obj.get();  
 
                 Map<String, String> metadata = session.getMetadata();
-                System.out.println("➡️ Metadata: " + metadata);
+                System.out.println("Metadata: " + metadata);
 
                 try {
                     Long studentId = Long.parseLong(metadata.get("studentId"));
@@ -67,7 +67,7 @@ public class StripeWebhookController {
 
                     meetingService.bookMeeting(req);
 
-                    System.out.println("🎉 Meeting booked for s=" + studentId
+                    System.out.println("Meeting booked for s=" + studentId
                             + " c=" + counsellorId
                             + " slot=" + slotId);
 
@@ -77,7 +77,7 @@ public class StripeWebhookController {
                 }
 
             } else {
-                System.out.println("⚠️ Could not deserialize checkout.session.completed into Session");
+                System.out.println("Could not deserialize checkout.session.completed into Session");
             }
         }
 

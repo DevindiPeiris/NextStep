@@ -34,7 +34,6 @@ public class ChatBotService {
 
         Optional<RecommendationMap> mapOpt = recommendationMapRepo.findByField1AndField2AndMostPreferredField(field1, field2, mostPreferred);
         if (mapOpt.isEmpty()) {
-            // Try the reverse order
             mapOpt = recommendationMapRepo.findByField1AndField2AndMostPreferredField(field2, field1, mostPreferred);
         }
 

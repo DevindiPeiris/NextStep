@@ -48,13 +48,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            // Optionally parse role
             String role = jwtService.extractRole(token);
 
             User userDetails = new User(
                     username,
                     "",
-                    Collections.singleton(() -> "ROLE_" + role) // e.g. ROLE_COUNSELLOR
+                    Collections.singleton(() -> "ROLE_" + role) 
             );
 
             if (jwtService.isTokenValid(token, username)) {

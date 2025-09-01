@@ -20,14 +20,14 @@ public class UserAdminController {
         this.authService = authService;
     }
 
-    // ✅ Get all users (safe DTO, no passwords)
+    
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
     public List<UserDTO> getAllUsers() {
         return authService.getAllUsers();
     }
 
-    // ✅ Add new user (only counsellor or admin allowed)
+    
     @PostMapping("/add")
     @PreAuthorize("hasRole('ADMIN')")
     public User addUser(@RequestBody RegisterRequest request,
@@ -39,7 +39,7 @@ public class UserAdminController {
         return authService.createUserWithRole(request, selectedRole);
     }
 
-    // ✅ Update user
+    
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public User updateUser(@PathVariable Long id,
@@ -49,7 +49,7 @@ public class UserAdminController {
         return authService.updateUser(id, request, selectedRole);
     }
 
-    // ✅ Delete user
+    
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public void deleteUser(@PathVariable Long id) {

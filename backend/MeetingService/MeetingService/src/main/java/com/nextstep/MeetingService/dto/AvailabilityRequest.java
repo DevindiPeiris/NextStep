@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 @Data
 public class AvailabilityRequest {
     private Long counsellorId;
-    private String date; // e.g., "2024-02-20"
-    private String start; // e.g., "09:00"
-    private String end;   // e.g., "14:00"
-    private int sessionLengthMinutes = 60; // default 1 hour
+    private String date; 
+    private String start; 
+    private String end;   
+    private int sessionLengthMinutes = 60; 
 
     public AvailabilityRequest() {
     }

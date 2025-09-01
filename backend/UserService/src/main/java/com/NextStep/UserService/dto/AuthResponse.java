@@ -3,7 +3,7 @@ package com.NextStep.UserService.dto;
 public class AuthResponse {
     private String token;
     private String role;
-    private Long userId;   // ✅ NEW
+    private Long userId;   
 
     public AuthResponse(String token, String role, Long userId) {
         this.token = token;
